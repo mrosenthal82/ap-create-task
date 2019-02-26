@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+        <title>Draw!</title>
+         <script type="text/javascript" src="js/draw.js"></script>
+</head>
+<body>
+    <button onclick="clear()">Clear</button>
+    <button onclick="toolType('line')">Line</button>
+    <button onclick="toolType('poly')">Polyline</button>
+    <button onclick="toolType('fill')">Bucket</button>
+    <canvas width="1500px" height="1500px" id="canvas1" onclick="draw()" ondblclick="endLine()">
+    </canvas>
+</body>
+</html>
