@@ -19,14 +19,13 @@ function draw() {
 
     if (toolCurrent === "line"){
       canvas.lineTo(xCord, yCord);
-    } else if (toolCurrent === "poly") {
-
-    } else if (toolCurrent === "fill"){
-      canvas.fill();
+    // } else if (toolCurrent === "poly") {
+    // } else if (toolCurrent === "fill"){
+    //   canvas.fill();
     }
 }
 
-function endLine(){
+function endLine() {
     let canvas = document.getElementById("canvas1").getContext("2d");
     canvas.closePath();
     canvas.fillStyle = "black";
