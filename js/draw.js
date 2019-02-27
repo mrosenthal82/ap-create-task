@@ -17,6 +17,7 @@ function draw() {
 
     if (toolCurrent === "shape" || toolCurrent === "line"){
       ctx.lineTo(xCord, yCord);
+      ctx.strokeStyle = colorDropdown();
       ctx.stroke();
     }
     // } else if (toolCurrent === "poly") {
@@ -28,14 +29,19 @@ function endShape() {
     let ctx = document.getElementById("canvas1").getContext("2d");
     ctx.closePath();
     if (toolCurrent === "shape"){
-      ctx.fillStyle = "black";
+      ctx.fillStyle = colorDropdown();;
       ctx.fill();
     }
     firstClick = true;
 }
 
-function clear() {
+function clearCanvas() {
   let ctx = document.getElementById("canvas1").getContext("2d");
-  ctx.clearRect(0, 0, 1500, 1500);
-  alert("happens");
+  ctx.clearRect(0, 0, canvas1.width, canvas1.height);
+  firstClick = true;
+}
+
+function colorDropdown(){
+  let a = document.getElementById("color");
+  return a.value;
 }

@@ -7,11 +7,20 @@
         <link rel="stylesheet" type="text/css" href="css/draw.css">
 </head>
 <body>
-    <!-- <button onclick="clear()">Clear</button> -->
+    <button id="clear" onclick="clearCanvas()">Clear</button>
     <button id="shape" onclick="toolType('shape')">Shape</button>
     <button id="line" onclick="toolType('line')">Line</button>
     <!-- <button id="poly" onclick="toolType('poly')">Polyline</button> -->
     <!-- <button id="bucket" onclick="toolType('bucket')">Bucket</button> -->
+    <select id="color">
+      <option value="black">Black</option>
+      <option value="red">Red</option>
+      <option value="orange">Orange</option>
+      <option value="yellow">Yellow</option>
+      <option value="green">Green</option>
+      <option value="blue">Blue</option>
+      <option value="purple">Purple</option>
+    </select>
     <canvas width="1280px" height="720px" id="canvas1" onclick="draw()" ondblclick="endShape()">
     </canvas>
 </body>
