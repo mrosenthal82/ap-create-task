@@ -13,7 +13,7 @@ function draw() {
     let yCord = event.offsetY;
     // xPoints.push(xCord);
     // yPoints.push(yCord);
-    alert(curvePoints[0]);
+    // alert(curvePoints[0]);
     // i++;
     let ctx = document.getElementById("canvas1").getContext("2d");
     if (firstClick /* && toolCurrent !== "bucket" */){
