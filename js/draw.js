@@ -26,9 +26,10 @@ function draw() {
       ctx.lineTo(xCord, yCord);
       ctx.strokeStyle = colorDropdown();
       ctx.stroke();
-    } else if (toolCurrent === "poly") {
-      // polyline(curvePoints[0], curvePoints[1], curvePoints[2], curvePoints[3]);
     }
+    // } else if (toolCurrent === "poly") {
+      // polyline(curvePoints[0], curvePoints[1], curvePoints[2], curvePoints[3]);
+    // }
     // } else if (toolCurrent === "bucket"){
     //   canvas.fill();
 }
