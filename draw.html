@@ -3,14 +3,16 @@
 <html>
 <head>
         <title>Draw!</title>
-         <script type="text/javascript" src="js/draw.js"></script>
+        <script type="text/javascript" src="js/draw.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/draw.css">
 </head>
 <body>
-    <button onclick="clear()">Clear</button>
-    <button onclick="toolType('line')">Line</button>
-    <button onclick="toolType('poly')">Polyline</button>
-    <button onclick="toolType('fill')">Bucket</button>
-    <canvas width="1500px" height="1500px" id="canvas1" onclick="draw()" ondblclick="endLine()">
+    <!-- <button onclick="clear()">Clear</button> -->
+    <button id="shape" onclick="toolType('shape')">Shape</button>
+    <button id="line" onclick="toolType('line')">Line</button>
+    <!-- <button id="poly" onclick="toolType('poly')">Polyline</button> -->
+    <!-- <button id="bucket" onclick="toolType('bucket')">Bucket</button> -->
+    <canvas width="1280px" height="720px" id="canvas1" onclick="draw()" ondblclick="endShape()">
     </canvas>
 </body>
 </html>
