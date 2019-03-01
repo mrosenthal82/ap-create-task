@@ -1,4 +1,4 @@
-#line:focus, #shape:focus {
+button:focus {
   color: #00f;
 }
 

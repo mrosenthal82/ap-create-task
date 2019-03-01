@@ -1,5 +1,5 @@
-let firstClick = true;
-let toolCurrent = "line";
+let clickCount = 0;
+let toolCurrent = "poly";
 let xPoints = [];
 let yPoints = [];
 // let i = 0;
@@ -11,29 +11,39 @@ function toolType(tool) {
 function draw() {
     let xCord = event.offsetX;
     let yCord = event.offsetY;
-    // xPoints.push(xCord);
-    // yPoints.push(yCord);
-    // alert(curvePoints[0]);
+    xPoints.push(xCord);
+    yPoints.push(yCord);
+    // alert(xPoints[i]+", "+yPoints[i]);
     // i++;
     let ctx = document.getElementById("canvas1").getContext("2d");
 
     if (toolCurrent === "shape" || toolCurrent === "line"){
-      if (firstClick){
-              ctx.beginPath();
-              ctx.moveTo(xCord, yCord);
-              firstClick = false;
-      }
-      ctx.lineTo(xCord, yCord);
-      ctx.strokeStyle = colorPick();
-      ctx.stroke();
+      outline(xCord, yCord);
     } else if (toolCurrent === "erase"){
       ctx.clearRect(xCord - 10, yCord - 10, 20, 20);
+    } else if (toolCurrent === "poly") {
+      if (clickCount < 2){
+        // outline(xCord, yCord);
+      } else {
+        polyline(xPoints[clickCount-2], yPoints[clickCount-2], xPoints[clickCount-1], yPoints[clickCount-1], xPoints[clickCount], yPoints[clickCount]);
+      }
     }
-    // } else if (toolCurrent === "poly") {
-      // polyline(curvePoints[0], curvePoints[1], curvePoints[2], curvePoints[3]);
-    // }
-    // } else if (toolCurrent === "bucket"){
+    // else if (toolCurrent === "bucket"){
     //   canvas.fill();
+    clickCount++;
+}
+
+function outline(xCord, yCord){
+  let ctx = document.getElementById("canvas1").getContext("2d");
+  if (clickCount === 0){
+          ctx.beginPath();
+          ctx.moveTo(xCord, yCord);
+  }
+  ctx.lineTo(xCord, yCord);
+  ctx.strokeStyle = "white";
+  ctx.stroke();
+  ctx.strokeStyle = colorPick();
+  ctx.stroke();
 }
 
 function endShape() {
@@ -43,7 +53,9 @@ function endShape() {
       ctx.fillStyle = colorPick();;
       ctx.fill();
     }
-    firstClick = true;
+    clickCount = 0;
+    xPoints = [];
+    yPoints = [];
 }
 
 function clearCanvas() {
@@ -58,10 +70,13 @@ function colorPick(){
   return b.value;
 }
 
-// function polyline(start, cp1, cp2, end){
-//   let ctx = document.getElementById("canvas1").getContext("2d");
-//   ctx.beginPath();
-//   ctx.moveTo(start.x, start.y);
-//   ctx.bezierCurveTo(cp1.x, cp1.y, cp2.x, cp2.y, end.x, end.y);
-//   ctx.stroke();
-// }
+function polyline(xStart, yStart, xOnCurve, yOnCurve, xEnd, yEnd){
+  let ctx = document.getElementById("canvas1").getContext("2d");
+  let xControl = xOnCurve * 2 - (xStart + xEnd) / 2;
+  let yControl = yOnCurve * 2 - (yStart + yEnd) / 2;
+  ctx.beginPath();
+  ctx.moveTo(xStart, yStart);
+  ctx.quadraticCurveTo(xControl, yControl, xEnd, yEnd);
+  ctx.strokeStyle = colorPick();
+  ctx.stroke();
+}
