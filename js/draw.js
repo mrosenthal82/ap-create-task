@@ -16,16 +16,18 @@ function draw() {
     // alert(curvePoints[0]);
     // i++;
     let ctx = document.getElementById("canvas1").getContext("2d");
-    if (firstClick /* && toolCurrent !== "bucket" */){
-            ctx.beginPath();
-            ctx.moveTo(xCord, yCord);
-            firstClick = false;
-    }
 
     if (toolCurrent === "shape" || toolCurrent === "line"){
+      if (firstClick){
+              ctx.beginPath();
+              ctx.moveTo(xCord, yCord);
+              firstClick = false;
+      }
       ctx.lineTo(xCord, yCord);
-      ctx.strokeStyle = colorDropdown();
+      ctx.strokeStyle = colorPick();
       ctx.stroke();
+    } else if (toolCurrent === "erase"){
+      ctx.clearRect(xCord - 10, yCord - 10, 20, 20);
     }
     // } else if (toolCurrent === "poly") {
       // polyline(curvePoints[0], curvePoints[1], curvePoints[2], curvePoints[3]);
@@ -38,7 +40,7 @@ function endShape() {
     let ctx = document.getElementById("canvas1").getContext("2d");
     ctx.closePath();
     if (toolCurrent === "shape"){
-      ctx.fillStyle = colorDropdown();;
+      ctx.fillStyle = colorPick();;
       ctx.fill();
     }
     firstClick = true;
@@ -50,9 +52,10 @@ function clearCanvas() {
   firstClick = true;
 }
 
-function colorDropdown(){
-  let a = document.getElementById("color");
-  return a.value;
+function colorPick(){
+  // let a = document.getElementById("color-select");
+  let b = document.getElementById("color-input");
+  return b.value;
 }
 
 // function polyline(start, cp1, cp2, end){
