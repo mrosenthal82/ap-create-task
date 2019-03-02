@@ -1,11 +1,20 @@
 let clickCount = 0;
-let toolCurrent = "poly";
+let toolCurrent = "line";
 let xPoints = [];
 let yPoints = [];
 // let i = 0;
 
 function toolType(tool) {
     toolCurrent = tool;
+    let ctx = document.getElementById("canvas1").getContext("2d");
+    ctx.closePath();
+    clickCount = 0;
+
+    document.getElementById("shape").style.color = "black";
+    document.getElementById("line").style.color = "black";
+    document.getElementById("erase").style.color = "black";
+    document.getElementById("poly").style.color = "black";
+    document.getElementById(tool).style.color = "blue";
 }
 
 function draw() {
@@ -58,8 +67,9 @@ function endShape() {
 
 function clearCanvas() {
   let ctx = document.getElementById("canvas1").getContext("2d");
+  ctx.closePath();
   ctx.clearRect(0, 0, canvas1.width, canvas1.height);
-  firstClick = true;
+  clickCount = 0;
 }
 
 function colorPick(){

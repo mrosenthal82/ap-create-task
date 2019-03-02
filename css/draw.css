@@ -1,7 +1,3 @@
-button:focus {
-  color: #00f;
-}
-
 #canvas1 {
   outline: black 2px dotted;
   margin-top: 20px;
