@@ -22,11 +22,6 @@ function draw() {
     } else if (toolCurrent === "erase"){
       ctx.clearRect(xCord - 10, yCord - 10, 20, 20);
     } else if (toolCurrent === "poly") {
-      // if (clickCount < 2){
-      //   // outline(xCord, yCord);
-      // } else {
-        // polyline(xPoints[clickCount-2], yPoints[clickCount-2], xPoints[clickCount-1], yPoints[clickCount-1], xPoints[clickCount], yPoints[clickCount]);
-      // }
       if (clickCount%2 == 0 && clickCount != 0){
         polyline(xPoints[clickCount-2], yPoints[clickCount-2], xPoints[clickCount-1], yPoints[clickCount-1], xPoints[clickCount], yPoints[clickCount]);
       }
