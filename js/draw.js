@@ -14,6 +14,8 @@ function toolType(tool) {
     document.getElementById("line").style.color = "black";
     document.getElementById("erase").style.color = "black";
     document.getElementById("poly").style.color = "black";
+    document.getElementById("rect").style.color = "black";
+    document.getElementById("circ").style.color = "black";
     document.getElementById(tool).style.color = "blue";
 }
 
@@ -22,14 +24,14 @@ function draw() {
     let yCord = event.offsetY;
     xPoints.push(xCord);
     yPoints.push(yCord);
-    let r = Number(document.getElementById("radius").value);
+    let r;
 
     let ctx = document.getElementById("canvas1").getContext("2d");
 
     if (toolCurrent === "shape" || toolCurrent === "line"){
       outline(xCord, yCord);
     } else if (toolCurrent === "erase"){
-      // ctx.clearRect(xCord - 10, yCord - 10, 20, 20);
+      r = Number(document.getElementById("eraser-radius").value);
       ctx.beginPath();
       ctx.arc(xCord, yCord, r, 0, 2 * Math.PI, true);
       ctx.closePath();
@@ -39,9 +41,20 @@ function draw() {
       if (clickCount%2 == 0 && clickCount != 0){
         polyline(xPoints[clickCount-2], yPoints[clickCount-2], xPoints[clickCount-1], yPoints[clickCount-1], xPoints[clickCount], yPoints[clickCount]);
       }
+    } else if (toolCurrent === "rect" && clickCount === 1){
+      ctx.fillStyle = colorPick();
+      ctx.beginPath();
+      ctx.moveTo(xCord, yCord);
+      ctx.lineTo(xCord, yPoints[clickCount-1]);
+      ctx.lineTo(xPoints[clickCount-1], yPoints[clickCount-1]);
+      ctx.lineTo(xPoints[clickCount-1], yCord);
+      ctx.lineTo(xCord, yCord);
+      ctx.closePath();
+      ctx.fill();
+      xPoints = [];
+      yPoints = [];
+      clickCount = -1;
     }
-    // else if (toolCurrent === "bucket"){
-    //   canvas.fill();
     clickCount++;
 }
 
