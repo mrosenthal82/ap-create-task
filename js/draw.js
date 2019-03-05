@@ -54,6 +54,13 @@ function draw() {
       xPoints = [];
       yPoints = [];
       clickCount = -1;
+    } else if (toolCurrent === "circ"){
+      r = Number(document.getElementById("circle-radius").value);
+      ctx.beginPath();
+      ctx.arc(xCord, yCord, r, 0, 2 * Math.PI, true);
+      ctx.closePath();
+      ctx.fillStyle = colorPick();
+      ctx.fill();
     }
     clickCount++;
 }
