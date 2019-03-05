@@ -11,7 +11,7 @@
     <button id="line" onclick="toolType('line')">Line</button>
     <button id="shape" onclick="toolType('shape')">Shape</button>
     <button id="erase" onclick="toolType('erase')">Eraser</button>
-    <button id="poly" onclick="toolType('poly')">Polyline</button>
+    <button id="poly" onclick="toolType('poly')">Curve</button>
     <!-- <button id="bucket" onclick="toolType('bucket')">Bucket</button> -->
     <!-- <select id="color-select">
       <option value="black">Black</option>
@@ -24,7 +24,7 @@
       <option value="brown">Brown</option>
       <option value="white">White</option>
     </select> -->
-    <input type="color" id="color-input">
+    <input type="color" id="color-input" onclick="endShape()">
     <canvas width="1280px" height="720px" id="canvas1" onclick="draw()" ondblclick="endShape()">
     </canvas>
 </body>

@@ -5,6 +5,7 @@ let yPoints = [];
 // let i = 0;
 
 function toolType(tool) {
+    endShape();
     toolCurrent = tool;
     let ctx = document.getElementById("canvas1").getContext("2d");
     ctx.closePath();
@@ -56,7 +57,7 @@ function outline(xCord, yCord){
 function endShape() {
     let ctx = document.getElementById("canvas1").getContext("2d");
     ctx.closePath();
-    if (toolCurrent === "shape"){
+    if (toolCurrent === "shape" && clickCount != 0){
       ctx.fillStyle = colorPick();
       ctx.fill();
     }
