@@ -10,20 +10,11 @@
     <button id="clear" onclick="clearCanvas()">Clear</button>
     <button id="line" onclick="toolType('line')">Line</button>
     <button id="shape" onclick="toolType('shape')">Shape</button>
-    <button id="erase" onclick="toolType('erase')">Eraser</button>
     <button id="poly" onclick="toolType('poly')">Curve</button>
     <!-- <button id="bucket" onclick="toolType('bucket')">Bucket</button> -->
-    <!-- <select id="color-select">
-      <option value="black">Black</option>
-      <option value="red">Red</option>
-      <option value="orange">Orange</option>
-      <option value="yellow">Yellow</option>
-      <option value="green">Green</option>
-      <option value="blue">Blue</option>
-      <option value="purple">Purple</option>
-      <option value="brown">Brown</option>
-      <option value="white">White</option>
-    </select> -->
+    <button id="erase" onclick="toolType('erase')">Eraser</button>
+    <label>Eraser Size:</label>
+    <input type="text" id="radius" onclick="endShape()" size="5">
     <input type="color" id="color-input" onclick="endShape()">
     <canvas width="1280px" height="720px" id="canvas1" onclick="draw()" ondblclick="endShape()">
     </canvas>

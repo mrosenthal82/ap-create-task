@@ -8,7 +8,6 @@ function toolType(tool) {
     endShape();
     toolCurrent = tool;
     let ctx = document.getElementById("canvas1").getContext("2d");
-    ctx.closePath();
     clickCount = 0;
 
     document.getElementById("shape").style.color = "black";
@@ -23,14 +22,19 @@ function draw() {
     let yCord = event.offsetY;
     xPoints.push(xCord);
     yPoints.push(yCord);
-    // alert(xPoints[i]+", "+yPoints[i]);
-    // i++;
+    let r = Number(document.getElementById("radius").value);
+
     let ctx = document.getElementById("canvas1").getContext("2d");
 
     if (toolCurrent === "shape" || toolCurrent === "line"){
       outline(xCord, yCord);
     } else if (toolCurrent === "erase"){
-      ctx.clearRect(xCord - 10, yCord - 10, 20, 20);
+      // ctx.clearRect(xCord - 10, yCord - 10, 20, 20);
+      ctx.beginPath();
+      ctx.arc(xCord, yCord, r, 0, 2 * Math.PI, true);
+      ctx.closePath();
+      ctx.fillStyle = "white";
+      ctx.fill();
     } else if (toolCurrent === "poly") {
       if (clickCount%2 == 0 && clickCount != 0){
         polyline(xPoints[clickCount-2], yPoints[clickCount-2], xPoints[clickCount-1], yPoints[clickCount-1], xPoints[clickCount], yPoints[clickCount]);
