@@ -15,7 +15,7 @@ body {
 }
 
 button {
-  width: 80px;
+  width: 85px;
   text-align: center;
   margin: 1px;
   height: 30px;
@@ -28,11 +28,11 @@ button {
 }
 
 .text-input {
-  width: 166px;
+  width: 175px;
 }
 
 #color-input {
-  width: 75px;
+  width: 80px;
   height: 26px;
   background-color: #ebfcfc;
   margin-bottom: 3px;

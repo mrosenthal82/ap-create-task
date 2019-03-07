@@ -82,8 +82,8 @@ function outline(xCord, yCord){
   }
   ctx.lineTo(xCord, yCord);
   ctx.lineWidth = 1;
-  ctx.strokeStyle = "white";
-  ctx.stroke();
+  // ctx.strokeStyle = "white";
+  // ctx.stroke();
   ctx.strokeStyle = colorPick();
   ctx.stroke();
 }
@@ -105,6 +105,7 @@ function clearCanvas() {
   ctx.closePath();
   ctx.clearRect(0, 0, canvas1.width, canvas1.height);
   clickCount = 0;
+  document.getElementById("canvas1").style.background = "white";
 }
 
 function colorPick(){
@@ -121,4 +122,9 @@ function polyline(xStart, yStart, xOnCurve, yOnCurve, xEnd, yEnd){
   ctx.quadraticCurveTo(xControl, yControl, xEnd, yEnd);
   ctx.strokeStyle = colorPick();
   ctx.stroke();
+}
+
+function background(){
+  let color = colorPick();
+  document.getElementById("canvas1").style.background = color;
 }
