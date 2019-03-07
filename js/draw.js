@@ -3,6 +3,7 @@ let toolCurrent = "line";
 let xPoints = [];
 let yPoints = [];
 // let i = 0;
+let bgColor;
 
 function toolType(tool) {
     endShape();
@@ -43,7 +44,7 @@ function draw() {
       ctx.beginPath();
       ctx.arc(xCord, yCord, r, 0, 2 * Math.PI, true);
       ctx.closePath();
-      ctx.fillStyle = "white";
+      ctx.fillStyle = bgColor;
       ctx.fill();
     } else if (toolCurrent === "poly") {
       if (clickCount%2 == 0 && clickCount != 0){
@@ -105,6 +106,7 @@ function clearCanvas() {
   ctx.closePath();
   ctx.clearRect(0, 0, canvas1.width, canvas1.height);
   clickCount = 0;
+  bgColor = "white";
   document.getElementById("canvas1").style.background = "white";
 }
 
@@ -125,6 +127,6 @@ function polyline(xStart, yStart, xOnCurve, yOnCurve, xEnd, yEnd){
 }
 
 function background(){
-  let color = colorPick();
-  document.getElementById("canvas1").style.background = color;
+  bgColor = colorPick();
+  document.getElementById("canvas1").style.background = bgColor;
 }
