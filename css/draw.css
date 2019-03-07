@@ -1,4 +1,42 @@
+* {
+  font-family: sans-serif;
+  font-size: 13px;
+}
+
 #canvas1 {
   outline: black 2px dotted;
   margin-top: 20px;
+  background-color: white;
+  outline-color: #5facac;
+}
+
+body {
+  background-color: #c2eded;
+}
+
+button {
+  width: 80px;
+  text-align: center;
+  margin: 1px;
+  height: 30px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  background-color: #ebfcfc;
+  color: #5facac;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.text-input {
+  width: 166px;
+}
+
+#color-input {
+  width: 75px;
+  height: 26px;
+  background-color: #ebfcfc;
+  margin-bottom: 3px;
+  border-style: solid;
+  border-color: #5facac;
+  border-width: 1px;
 }

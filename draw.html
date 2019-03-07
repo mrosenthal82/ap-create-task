@@ -13,14 +13,17 @@
     <button id="poly" onclick="toolType('poly')">Curve</button>
     <!-- <button id="bucket" onclick="toolType('bucket')">Fill</button> -->
     <button id="erase" onclick="toolType('erase')">Eraser</button>
-    <label>Eraser Size:</label>
-    <input type="text" id="eraser-radius" onclick="endShape()" size="2">
-    <input type="color" id="color-input" onclick="endShape()">
-    <br/>
+    <button class="text-input">
+      <label>Eraser Size:</label>
+      <input type="text" id="eraser-radius" onclick="endShape()" size="2">
+    </button>
     <button id="rect" onclick="toolType('rect')">Rectangle</button>
     <button id="circ" onclick="toolType('circ')">Circle</button>
-    <label>Circle Size:</label>
-    <input type="text" id="circle-radius" onclick="endShape()" size="2">
+    <button class="text-input">
+      <label>Circle Size:</label>
+      <input type="text" id="circle-radius" onclick="endShape()" size="2">
+    </button>
+    <input type="color" id="color-input" onclick="endShape()">
     <canvas width="1280px" height="720px" id="canvas1" onclick="draw()" ondblclick="endShape()">
     </canvas>
 </body>

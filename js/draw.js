@@ -10,13 +10,21 @@ function toolType(tool) {
     let ctx = document.getElementById("canvas1").getContext("2d");
     clickCount = 0;
 
-    document.getElementById("shape").style.color = "black";
-    document.getElementById("line").style.color = "black";
-    document.getElementById("erase").style.color = "black";
-    document.getElementById("poly").style.color = "black";
-    document.getElementById("rect").style.color = "black";
-    document.getElementById("circ").style.color = "black";
-    document.getElementById(tool).style.color = "blue";
+    document.getElementById("shape").style.color = "#5facac";
+    document.getElementById("line").style.color = "#5facac";
+    document.getElementById("erase").style.color = "#5facac";
+    document.getElementById("poly").style.color = "#5facac";
+    document.getElementById("rect").style.color = "#5facac";
+    document.getElementById("circ").style.color = "#5facac";
+    document.getElementById(tool).style.color = "white";
+
+    document.getElementById("shape").style.background = "#ebfcfc";
+    document.getElementById("line").style.background = "#ebfcfc";
+    document.getElementById("erase").style.background = "#ebfcfc";
+    document.getElementById("poly").style.background = "#ebfcfc";
+    document.getElementById("rect").style.background = "#ebfcfc";
+    document.getElementById("circ").style.background = "#ebfcfc";
+    document.getElementById(tool).style.background = "#92d3d3";
 }
 
 function draw() {
@@ -61,6 +69,7 @@ function draw() {
       ctx.closePath();
       ctx.fillStyle = colorPick();
       ctx.fill();
+      clickCount = -1;
     }
     clickCount++;
 }
@@ -72,6 +81,7 @@ function outline(xCord, yCord){
           ctx.moveTo(xCord, yCord);
   }
   ctx.lineTo(xCord, yCord);
+  ctx.lineWidth = 1;
   ctx.strokeStyle = "white";
   ctx.stroke();
   ctx.strokeStyle = colorPick();
