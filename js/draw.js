@@ -3,7 +3,7 @@ let toolCurrent = "line";
 let xPoints = [];
 let yPoints = [];
 // let i = 0;
-let bgColor;
+let bgColor = "white";
 
 function toolType(tool) {
     endShape();
