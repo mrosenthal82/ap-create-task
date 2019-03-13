@@ -2,7 +2,6 @@ let clickCount = 0;
 let toolCurrent = "line";
 let xPoints = [];
 let yPoints = [];
-// let i = 0;
 let bgColor = "white";
 
 function toolType(tool) {
@@ -72,6 +71,9 @@ function draw() {
       ctx.fill();
       clickCount = -1;
     }
+    // else if (toolCurrent === "eyedrop"){
+    //
+    // }
     clickCount++;
 }
 
