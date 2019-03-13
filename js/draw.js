@@ -40,11 +40,14 @@ function draw() {
       outline(xCord, yCord);
     } else if (toolCurrent === "erase"){
       r = Number(document.getElementById("eraser-radius").value);
-      ctx.beginPath();
-      ctx.arc(xCord, yCord, r, 0, 2 * Math.PI, true);
-      ctx.closePath();
-      ctx.fillStyle = bgColor;
-      ctx.fill();
+      // ctx.beginPath();
+      // ctx.arc(xCord, yCord, r, 0, 2 * Math.PI, true);
+      // ctx.closePath();
+      // ctx.fillStyle = bgColor;
+      // ctx.fill();
+      ctx.clearRect(xCord - r, yCord - r, 2 * r, 2 * r);
+      // ctx.clearRect(xCord - r * 0.75, yCord - r * 1.25, 1.5 * r, 2.5 * r);
+      // ctx.clearRect(xCord - r * 1.25, yCord - r * 0.75, 2.5 * r, 1.5 * r);
     } else if (toolCurrent === "poly") {
       if (clickCount%2 == 0 && clickCount != 0){
         polyline(xPoints[clickCount-2], yPoints[clickCount-2], xPoints[clickCount-1], yPoints[clickCount-1], xPoints[clickCount], yPoints[clickCount]);
