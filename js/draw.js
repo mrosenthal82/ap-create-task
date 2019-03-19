@@ -16,6 +16,7 @@ function toolType(tool) {
     document.getElementById("poly").style.color = "#5facac";
     document.getElementById("rect").style.color = "#5facac";
     document.getElementById("circ").style.color = "#5facac";
+    document.getElementById("curve-fill").style.color = "#5facac";
     document.getElementById(tool).style.color = "white";
 
     document.getElementById("shape").style.background = "#ebfcfc";
@@ -24,6 +25,7 @@ function toolType(tool) {
     document.getElementById("poly").style.background = "#ebfcfc";
     document.getElementById("rect").style.background = "#ebfcfc";
     document.getElementById("circ").style.background = "#ebfcfc";
+    document.getElementById("curve-fill").style.background = "#ebfcfc";
     document.getElementById(tool).style.background = "#92d3d3";
 }
 
@@ -48,9 +50,11 @@ function draw() {
       ctx.clearRect(xCord - r, yCord - r, 2 * r, 2 * r);
       // ctx.clearRect(xCord - r * 0.75, yCord - r * 1.25, 1.5 * r, 2.5 * r);
       // ctx.clearRect(xCord - r * 1.25, yCord - r * 0.75, 2.5 * r, 1.5 * r);
-    } else if (toolCurrent === "poly") {
+    } else if (toolCurrent === "poly" || toolCurrent === "curve-fill") {
       if (clickCount%2 == 0 && clickCount != 0){
         polyline(xPoints[clickCount-2], yPoints[clickCount-2], xPoints[clickCount-1], yPoints[clickCount-1], xPoints[clickCount], yPoints[clickCount]);
+      } else if (clickCount === 0){
+
       }
     } else if (toolCurrent === "rect" && clickCount === 1){
       ctx.fillStyle = colorPick();
@@ -96,6 +100,14 @@ function outline(xCord, yCord){
 
 function endShape() {
     let ctx = document.getElementById("canvas1").getContext("2d");
+    if (toolCurrent === "curve-fill"){
+      for (let i = clickCount; i >= 0; i--){
+        ctx.lineTo(xPoints[clickCount-i], yPoints[clickCount-i]);
+      }
+      ctx.lineTo(xPoints[clickCount], yPoints[clickCount]);
+      ctx.fillStyle = colorPick();
+      ctx.fill();
+    }
     ctx.closePath();
     if (toolCurrent === "shape" && clickCount != 0){
       ctx.fillStyle = colorPick();
@@ -109,6 +121,8 @@ function endShape() {
 function clearCanvas() {
   let ctx = document.getElementById("canvas1").getContext("2d");
   ctx.closePath();
+  xPoints = [];
+  yPoints = [];
   ctx.clearRect(0, 0, canvas1.width, canvas1.height);
   clickCount = 0;
   bgColor = "white";
@@ -127,8 +141,13 @@ function polyline(xStart, yStart, xOnCurve, yOnCurve, xEnd, yEnd){
   ctx.beginPath();
   ctx.moveTo(xStart, yStart);
   ctx.quadraticCurveTo(xControl, yControl, xEnd, yEnd);
-  ctx.strokeStyle = colorPick();
-  ctx.stroke();
+  if (toolCurrent === "poly"){
+    ctx.strokeStyle = colorPick();
+    ctx.stroke();
+  } else if (toolCurrent === "curve-fill"){
+    ctx.fillStyle = colorPick();
+    ctx.fill();
+  }
 }
 
 function background(){
