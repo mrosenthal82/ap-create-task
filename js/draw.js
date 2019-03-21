@@ -42,7 +42,7 @@ function draw() {
       outline(xCord, yCord);
     } else if (toolCurrent === "erase"){
       eraserSize = Number(document.getElementById("eraser-size").value);
-      ctx.clearRect(xCord - r, yCord - r, 2 * r, 2 * r);
+      ctx.clearRect(xCord - eraserSize, yCord - eraserSize, 2 * eraserSize, 2 * eraserSize);
     } else if (toolCurrent === "poly" || toolCurrent === "curve-fill") {
       if (clickCount%2 == 0 && clickCount != 0){
         polyline(xPoints[clickCount-2], yPoints[clickCount-2], xPoints[clickCount-1], yPoints[clickCount-1], xPoints[clickCount], yPoints[clickCount]);
