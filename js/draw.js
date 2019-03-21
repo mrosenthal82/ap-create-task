@@ -108,11 +108,8 @@ function endShape() {
 
 function clearCanvas() {
   let ctx = document.getElementById("canvas1").getContext("2d");
-  ctx.closePath();
-  xPoints = [];
-  yPoints = [];
+  endShape();
   ctx.clearRect(0, 0, canvas1.width, canvas1.height);
-  clickCount = 0;
   bgColor = "white";
   document.getElementById("canvas1").style.background = "white";
 }
