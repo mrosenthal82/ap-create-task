@@ -88,7 +88,7 @@ function outline(xCord, yCord){
 
 function endShape() {
     let ctx = document.getElementById("canvas1").getContext("2d");
-    if (toolCurrent === "curve-fill"){
+    if (toolCurrent === "curve-fill" && clickCount != 0){
       for (let i = clickCount; i >= 0; i--){
         ctx.lineTo(xPoints[clickCount-i], yPoints[clickCount-i]);
       }
